@@ -1,0 +1,33 @@
+﻿@model WebUI.Models.FileViewModel
+
+@{
+    ViewBag.Title = "List";
+}
+
+
+@using (Html.BeginForm("List", "File"))
+{
+    <table style="margin-top: 5px">
+        <tr>
+            <td> @Html.EditorFor(model => model.Key, new { htmlAttributes = new { @class = "form-control" } })</td>
+            <td><input type="submit" value="Search" class="btn btn-default" /></td>
+        </tr>
+    </table>
+}
+
+@if (!Model.Key.IsEmpty())
+{
+    <h3>Результат по запросу @Model.Key</h3>
+}
+
+@foreach (var p in Model.Files)
+{
+    <table>
+        @{ Html.RenderPartial("_FileSummary", p); }
+    </table>
+            }
+
+
+<div>
+    @Html.ActionLink("Add new file", "AddFile")
+</div>

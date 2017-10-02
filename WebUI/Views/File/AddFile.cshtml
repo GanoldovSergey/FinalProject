@@ -1,0 +1,28 @@
+﻿@Styles.Render("~/Content/Site.css")
+
+@{
+    ViewBag.Title = "AddFile";
+}
+@using (Html.BeginForm("AddFile", "File", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    @Html.AntiForgeryToken()
+
+    @Html.EditorForModel()
+
+    @TempData["message"]
+
+
+    <div class="editor-field">
+        <div style padding-top: 10px;>
+            Upload new file:
+            <input type="file" name="uploadFile" />
+        </div>
+    </div>
+        <input type="submit" value="Save" />
+
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

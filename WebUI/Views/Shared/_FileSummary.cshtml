@@ -1,0 +1,8 @@
+﻿@model Domain.Entities.File
+
+<div class="file">
+
+    <h3>@Model.Name</h3>   
+    <h4>@($"{Decimal.Round(Model.Size.GetValueOrDefault() / 1024, 2)} kb")</h4>
+    @Model.CreationDate
+</div>
